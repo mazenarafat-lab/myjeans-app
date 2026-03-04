@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# GitHub Actions Cloud Build - Quick Start
+# This builds your APK in the cloud (no Android Studio needed!)
+
+## STEP 1: Create a GitHub repository
+# 1. Go to https://github.com/new
+# 2. Name it: myjeans-app
+# 3. Make it Public or Private (your choice)
+# 4. Click "Create repository"
+
+## STEP 2: Upload your code
+# In PowerShell, run these commands:
+
+cd d:\woo-product-video\MyJeansApp
+
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+
+# Replace with your actual GitHub username:
+git remote add origin https://github.com/YOUR_USERNAME/myjeans-app.git
+git push -u origin main
+
+## STEP 3: Get your APK (automatic!)
+# 1. Go to https://github.com/YOUR_USERNAME/myjeans-app/actions
+# 2. Wait 2-3 minutes for the build to complete
+# 3. Click the completed workflow run
+# 4. Scroll down to "Artifacts" section
+# 5. Download "app-debug" zip file
+# 6. Extract the APK and install on BlueStacks!
+
+## That's it! No installations needed on your PC.
