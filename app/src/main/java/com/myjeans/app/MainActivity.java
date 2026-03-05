@@ -46,6 +46,15 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setSupportMultipleWindows(true);
         webSettings.setLoadsImagesAutomatically(true);
         webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        
+        // Fix font and zoom to match Chrome
+        webSettings.setLoadWithOverviewMode(true);
+        webSettings.setUseWideViewPort(true);
+        webSettings.setBuiltInZoomControls(false);
+        webSettings.setDisplayZoomControls(false);
+        webSettings.setTextZoom(100);
+        webSettings.setDefaultFontSize(16);
+        webSettings.setMinimumFontSize(12);
 
         webView.setWebChromeClient(new WebChromeClient());
         
