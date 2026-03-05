@@ -1,7 +1,9 @@
 package com.myjeans.app;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.webkit.WebChromeClient;
@@ -51,9 +53,20 @@ public class MainActivity extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                // Allow all URLs to load in the WebView
-                view.loadUrl(url);
-                return true;
+                if (url.startsWith("http://") || url.startsWith("https://")) {
+                    // Load HTTP/HTTPS URLs in the WebView
+                    view.loadUrl(url);
+                    return true;
+                } else {
+                    // Open external links (tel:, mailto:, whatsapp:, etc.) in external apps
+                    try {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        Toast.makeText(MainActivity.this, "Cannot open link: " + url, Toast.LENGTH_SHORT).show();
+                    }
+                    return true;
+                }
             }
         });
     }
