@@ -53,9 +53,19 @@ public class MainActivity extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (url.startsWith("http://") || url.startsWith("https://")) {
-                    // Load HTTP/HTTPS URLs in the WebView
+                // Load main domain in WebView, open external domains in browser
+                if (url.contains("myjeans-sy.com")) {
+                    // Load main website in WebView
                     view.loadUrl(url);
+                    return true;
+                } else if (url.startsWith("http://") || url.startsWith("https://")) {
+                    // Open external HTTP/HTTPS links in browser
+                    try {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        Toast.makeText(MainActivity.this, "Cannot open link: " + url, Toast.LENGTH_SHORT).show();
+                    }
                     return true;
                 } else {
                     // Open external links (tel:, mailto:, whatsapp:, etc.) in external apps
