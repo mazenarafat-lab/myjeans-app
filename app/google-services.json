@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "637802635699",
-    "project_id": "myjeans-app-b76d4",
-    "storage_bucket": "myjeans-app-b76d4.firebasestorage.app"
+    "project_number": "376044404548",
+    "project_id": "myjeans-app-v2",
+    "storage_bucket": "myjeans-app-v2.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:637802635699:android:c5d40e26a29c4259afebc6",
+        "mobilesdk_app_id": "1:376044404548:android:52720b62684167bda96111",
         "android_client_info": {
           "package_name": "com.myjeans.app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDqmwmDRE3cn-yPaPnP9VeT0RNjWLKMVZQ"
+          "current_key": "AIzaSyC5myIFy2XJ1_bgMsy2U_neCMf60KbDB6Q"
         }
       ],
       "services": {
