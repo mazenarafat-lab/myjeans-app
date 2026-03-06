@@ -28,8 +28,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Initialize Pusher Beams
-        PushNotifications.start(getApplicationContext(), "b94c7893-86d1-4668-9f36-c7678f825be4");
-        PushNotifications.subscribeToInterest("myjeans-updates");
+        try {
+            PushNotifications.start(getApplicationContext(), "b94c7893-86d1-4668-9f36-c7678f825be4");
+            PushNotifications.subscribeToInterest("myjeans-updates");
+        } catch (Exception e) {
+            Toast.makeText(this, "Pusher setup error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
 
         // Request notification permission for Android 13+
         requestNotificationPermission();
