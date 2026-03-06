@@ -15,25 +15,29 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import com.pusher.pushnotifications.PushNotifications;
 
 public class MainActivity extends AppCompatActivity {
 
     private WebView webView;
-    private static final int NOTIFICATION_PERMISSION_CODE = 100;
+    private static final int NOTIFICATION_PERMISSION_CODE = 1001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Initialize Pusher Beams
+        PushNotifications.start(getApplicationContext(), "b94c7893-86d1-4668-9f36-c7678f825be4");
+        PushNotifications.subscribeToInterest("myjeans-updates");
+
+        // Request notification permission for Android 13+
+        requestNotificationPermission();
+
+        // Setup WebView
         webView = findViewById(R.id.webView);
         setupWebView();
         webView.loadUrl("http://myjeans-sy.com/");
-
-        // Request notification permission for Android 13+
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            requestNotificationPermission();
-        }
     }
 
     private void setupWebView() {
