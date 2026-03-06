@@ -26,11 +26,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         if (remoteMessage.getNotification() != null) {
             String title = remoteMessage.getNotification().getTitle();
             String body = remoteMessage.getNotification().getBody();
+            Log.d(TAG, "Message Notification Title: " + title);
+            Log.d(TAG, "Message Notification Body: " + body);
             sendNotification(title, body);
         }
 
         // Check if message contains data payload
         if (remoteMessage.getData().size() > 0) {
+            Log.d(TAG, "Message data payload: " + remoteMessage.getData());
             String title = remoteMessage.getData().get("title");
             String message = remoteMessage.getData().get("message");
             if (title != null && message != null) {
@@ -42,6 +45,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onNewToken(String token) {
         Log.d(TAG, "Refreshed token: " + token);
+        Log.i(TAG, "FCM Token for device: " + token);
         // Send token to your server if needed
     }
 
