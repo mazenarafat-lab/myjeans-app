@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize Pusher Beams
         PushNotifications.start(getApplicationContext(), "b94c7893-86d1-4668-9f36-c7678f825be4");
-        PushNotifications.subscribeToInterest("myjeans-updates");
+        PushNotifications.addInterest("myjeans-updates");
 
         // Get Firebase token for debugging
         FirebaseMessaging.getInstance().getToken()
