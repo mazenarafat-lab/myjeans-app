@@ -15,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import com.pusher.pushnotifications.PushNotifications;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +27,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Initialize Pusher Beams
+        PushNotifications.start(getApplicationContext(), "b94c7893-86d1-4668-9f36-c7678f825be4");
+        PushNotifications.subscribeToInterest("myjeans-updates");
+
+        // Get Firebase token for debugging
+        FirebaseMessaging.getInstance().getToken()
+            .addOnCompleteListener(task -> {
+                if (!task.isSuccessful()) {
+                    Log.w("FCM_TOKEN", "Fetching FCM token failed", task.getException());
+                } else {
+                    String token = task.getResult();
+                    Log.i("FCM_TOKEN", "FCM Token: " + token);
+                    
+                    // Show token to user
+                    new android.app.AlertDialog.Builder(this)
+                        .setTitle("Firebase Token")
+                        .setMessage("Token: " + token)
+                        .setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
+                        .show();
+                }
+            });
 
         // Request notification permission for Android 13+
         requestNotificationPermission();
