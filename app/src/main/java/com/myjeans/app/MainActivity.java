@@ -17,6 +17,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import com.pusher.pushnotifications.PushNotifications;
 import com.google.firebase.messaging.FirebaseMessaging;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
