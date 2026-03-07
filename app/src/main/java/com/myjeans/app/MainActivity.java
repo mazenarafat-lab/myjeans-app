@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import com.pusher.pushnotifications.PushNotifications;
 import com.google.firebase.messaging.FirebaseMessaging;
 import android.util.Log;
 
@@ -28,10 +27,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Initialize Pusher Beams
-        PushNotifications.start(getApplicationContext(), "b94c7893-86d1-4668-9f36-c7678f825be4");
-        PushNotifications.addInterest("myjeans-updates");
 
         // Get Firebase token for debugging
         FirebaseMessaging.getInstance().getToken()
